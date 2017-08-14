@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- required elements -->
+  <!-- add_code-->
+  <xs:element name="add_code">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:maxLength value="10"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  
+  <!--product url on your site-->
+  <xs:element name="url">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="200"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  
+  <!--product's image url on your site-->
+  <xs:element name="imgurl">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="300"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+  <!--maker of the car-->
+  <xs:element name="maker">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="20"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  
+  <!--car Model-->
+  <xs:element name="model">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="20"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+  <!--price in euro-->
+  <xs:element name="price">
+    <xs:simpleType>
+      <xs:restriction base="xs:float"/>
+    </xs:simpleType>
+  </xs:element>
+  
+  <!--engine size-->
+  <xs:element name="cc">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:maxLength value="6"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+  <!--horse power of the engine-->
+  <xs:element name="bhp">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:maxLength value="4"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  
+  <!--killometers runned-->
+  <xs:element name="km">
+    <xs:simpleType>
+      <xs:restriction base="xs:int">
+        <xs:maxLength value="10"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+  <!--year of first cirqulation -->
+  <xs:element name="year">
+    <xs:simpleType>
+      <xs:restriction base="xs:gYear">
+        <xs:maxLength value="4"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+  <!--color of the car -->
+  <xs:element name="color">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="20"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <!---->
+  <!-- Description Of The Car -->
+  <!--The Description Must Be in Order of 
+  maker, model, price, cc, bhp, km, year, color-->
+  <xs:element name="description">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="200"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  
+</xs:schema>

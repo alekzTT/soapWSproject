@@ -1,0 +1,104 @@
+<?php session_start(); 
+if (isset($_SESSION["user"]))
+{
+require_once('../db/dbConn.php');
+
+ $sql="SELECT * FROM `carz_db`.`adds`";
+ $result=mysql_query($sql);
+$doc=new DomDocument("1.0");
+$root=$doc->createElement("cars");
+$root=$doc->appendChild($root);
+ while ($row=mysql_fetch_array($result))
+ {
+	$car=$doc->createElement("car");
+	$car=$root->appendChild($car);
+	
+	$add=$doc->createElement("add_code");
+	$add=$car->appendChild($add);
+	$value=$doc->createTextNode($row[0]);
+	$value=$add->appendChild($value);
+	
+	$img=$doc->createElement("imgurl");
+	$img=$car->appendChild($img);
+	$value=$doc->createTextNode($row[11]);
+	$value=$img->appendChild($value);
+	
+	$url=$doc->createElement("url");
+	$url=$car->appendChild($url);
+	$value=$doc->createTextNode("http://web2.teiser.gr/webservices/carz/public/searched.php?add=".$row[0]);
+	$value=$url->appendChild($value);
+	
+	
+	$maker=$doc->createElement("maker");
+	$maker=$car->appendChild($maker);
+//================================================================================
+	$code=$row[2];
+	$rnr=(mysql_query("SELECT * FROM makers WHERE maker_code= '$code'"));
+	while ($rn=mysql_fetch_array($rnr))
+	{ 
+	$nam=$rn[1];
+	}
+		$value=$doc->createTextNode($nam);
+		$value=$maker->appendChild($value);
+//=================================================================================
+	$model=$doc->createElement("model");
+	$model=$car->appendChild($model);
+//=================================================================================
+	$code1=$row[3];
+	$sql="SELECT * FROM `carz_db`.`models` WHERE model_code=$code1";
+	$res=mysql_query($sql);
+	while ($row2=mysql_fetch_array($res))
+	{
+		$name=$row2["model_name"];
+	}	
+//=================================================================================	
+	$value=$doc->createTextNode($name);
+	$value=$model->appendChild($value);
+//=================================================================================	
+	$price=$doc->createElement("price");
+	$price=$car->appendChild($price);
+	$value=$doc->createTextNode($row[4]);
+	$value=$price->appendChild($value);
+	
+	$debatable=$doc->createElement("debatable");
+	$debatable=$car->appendChild($debatable);
+	$value=$doc->createTextNode($row[10]);
+	$value=$debatable->appendChild($value);
+	
+	$cc=$doc->createElement("cc");
+	$cc=$car->appendChild($cc);
+	$value=$doc->createTextNode($row[5]);
+	$value=$cc->appendChild($value);
+	
+	$bhp=$doc->createElement("bhp");
+	$bhp=$car->appendChild($bhp);
+	$value=$doc->createTextNode($row[6]);
+	$value=$bhp->appendChild($value);
+	
+	$km=$doc->createElement("km");
+	$km=$car->appendChild($km);
+	$value=$doc->createTextNode($row[7]);
+	$value=$km->appendChild($value);
+	
+	$year=$doc->createElement("year");
+	$year=$car->appendChild($year);
+	$value=$doc->createTextNode($row[8]);
+	$value=$year->appendChild($value);
+	
+	$color=$doc->createElement("color");
+	$color=$car->appendChild($color);
+	$value=$doc->createTextNode($row[9]);
+	$value=$color->appendChild($value);
+	
+	$description=$doc->createElement("description");
+	$description=$car->appendChild($description);
+	$value=$doc->createTextNode($nam." ".$name." ".$row[4]." ".$row[5]." ".$row[6]." ".$row[7]." ".$row[8]." ".$row[9]);
+	$value=$description->appendChild($value);
+	
+ }
+$doc->save("../xml/adds.xml");
+echo "<center><br/><br/><br/><br/><h2><a href=\"../xml/adds.xml\">Open Xml File</a></h2>";
+echo "<h2><a href=\"admin.php\">Back</a></h2></center>";
+//header("Location:http://web2.teiser.gr/webservices/carz/xml/adds.xml");
+} else { 	header("Location:login.php"); }
+?>
