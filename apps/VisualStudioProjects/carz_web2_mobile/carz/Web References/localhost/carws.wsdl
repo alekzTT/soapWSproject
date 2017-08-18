@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="urn:carws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:carws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:carws">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="Car">
+        <xsd:all>
+          <xsd:element name="maker" type="xsd:int" />
+          <xsd:element name="model" type="xsd:string" />
+          <xsd:element name="min_price" type="xsd:int" />
+          <xsd:element name="max_price" type="xsd:int" />
+          <xsd:element name="min_engine" type="xsd:int" />
+          <xsd:element name="max_engine" type="xsd:int" />
+          <xsd:element name="min_power" type="xsd:int" />
+          <xsd:element name="max_power" type="xsd:int" />
+          <xsd:element name="min_km" type="xsd:int" />
+          <xsd:element name="max_km" type="xsd:int" />
+          <xsd:element name="min_year" type="xsd:int" />
+          <xsd:element name="max_year" type="xsd:int" />
+          <xsd:element name="color" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="reply">
+        <xsd:all>
+          <xsd:element name="reply0" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="carRequest">
+    <wsdl:part name="Car" type="tns:Car" />
+  </wsdl:message>
+  <wsdl:message name="carResponse">
+    <wsdl:part name="reply" type="tns:reply" />
+  </wsdl:message>
+  <wsdl:portType name="carwsPortType">
+    <wsdl:operation name="car">
+      <documentation>give back carz</documentation>
+      <wsdl:input message="tns:carRequest" />
+      <wsdl:output message="tns:carResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="carwsBinding" type="tns:carwsPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="car">
+      <soap:operation soapAction="urn:carws#car" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:carws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:carws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="carws">
+    <wsdl:port name="carwsPort" binding="tns:carwsBinding">
+      <soap:address location="http://web2.teiser.gr/webservices/ws/carws.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

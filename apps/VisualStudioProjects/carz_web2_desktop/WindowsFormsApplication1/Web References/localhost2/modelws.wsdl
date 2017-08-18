@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="urn:modelws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:modelws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:modelws">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="Maker">
+        <xsd:all>
+          <xsd:element name="maker" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="reply">
+        <xsd:all>
+          <xsd:element name="reply0" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="modelsRequest">
+    <wsdl:part name="Maker" type="tns:Maker" />
+  </wsdl:message>
+  <wsdl:message name="modelsResponse">
+    <wsdl:part name="reply" type="tns:reply" />
+  </wsdl:message>
+  <wsdl:portType name="modelwsPortType">
+    <wsdl:operation name="models">
+      <documentation>give back carz</documentation>
+      <wsdl:input message="tns:modelsRequest" />
+      <wsdl:output message="tns:modelsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="modelwsBinding" type="tns:modelwsPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="models">
+      <soap:operation soapAction="urn:modelws#models" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:modelws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:modelws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="modelws">
+    <wsdl:port name="modelwsPort" binding="tns:modelwsBinding">
+      <soap:address location="http://web2.teiser.gr/webservices/ws_model/modelws.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
