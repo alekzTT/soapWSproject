@@ -20,20 +20,21 @@
 <center>
 <br/>
 <h3>2011 - 2012</h3>
-<h3>Tecnological Educational Institute of Serres</h3>
-<h3>Telocomunication and Computer Science Department</h3>
+<h3>Technological Educational Institute of Serres - Greece</h3>
+<h3>Telecommunications and Computer Science Department</h3>
 <h3>Graduation Project</h3> 
 <h3>student: Theodoropoulos Alexandros</h3>
 <h3>supervisor: dr Lantzos Theodoros</h3>
 
-<br/></center>
+<br/>
+</center>
 
 <b>Search Engine Functions</b><br/>
 <ul class="none">
-<li>local database search</li>
-<li>Database Update from client XML exported files </li>
-<li>Ajax search functionality</li>
-<li>Real time search from server with published functions using SOAP</li>
+	<li>local database search</li>
+	<li>Database Update from client XML exported files </li>
+	<li>Ajax search functionality</li>
+	<li>Real time search from server with published functions using SOAP</li>
 </ul>
 
 <br/>
