@@ -15,10 +15,10 @@ A search engine with local DB that parses partner sites classifieds XML extracts
 ## apps/
 
 * #### DesktopCarService.exe 
-Windows desktop app consumes soap from http://web2.teiser.gr/webservices/carz/ still functioning built with C# with .net4.
+Windows desktop app consumes soap from http://web2.teiser.gr/webservices/carz/ still functioning built with C# with .net4 and Visual Studio 10
 
 * #### carz.exe
-Windows mobile app consumes soap service from http://alekz.eu that is currently unavailable built with C# with .net3.5.
+Windows mobile app consumes soap service from http://web2.teiser.gr/webservices/carz/ still functioning built with C# with .net3.5 and Visual Studio 10
 
 - - - -
 More info could be found in the documentation folder, unfortunately only in Greek (for now)
