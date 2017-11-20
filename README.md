@@ -1,4 +1,4 @@
-# thesis
+# Soap WS and XML showcase
 My graduation project studying web services.
 - - - -
 ## included projects
